@@ -83,7 +83,11 @@ class UserAnime(TimestampModel):
         Anime, verbose_name="Аниме", on_delete=models.CASCADE
     )
     watch_status = models.CharField(
-        verbose_name="Статус просмотра", max_length=50, null=False, blank=False
+        verbose_name="Статус просмотра",
+        max_length=50,
+        choices=AnimeWatchingEnum.choices,
+        null=True,
+        blank=True,
     )
 
     class Meta:
