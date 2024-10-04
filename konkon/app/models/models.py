@@ -64,7 +64,7 @@ class Anime(TimestampModel):
         Category, verbose_name="Категория аниме", blank=True, related_name="animes"
     )
     users = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, through="UserAnime", verbose_name="Пользователи"
+        settings.AUTH_USER_MODEL, verbose_name="Пользователи", through="UserAnime"
     )
 
     class Meta:
@@ -73,3 +73,21 @@ class Anime(TimestampModel):
 
     def __str__(self):
         return self.title
+
+
+class UserAnime(TimestampModel):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, verbose_name="Пользователь", on_delete=models.CASCADE
+    )
+    anime: Anime = models.ForeignKey(
+        Anime, verbose_name="Аниме", on_delete=models.CASCADE
+    )
+    watch_status = models.CharField(
+        verbose_name="Статус просмотра", max_length=50, null=False, blank=False
+    )
+
+    class Meta:
+        unique_together = ("user", "anime")
+
+    def __str__(self):
+        return f"{self.user} - {self.anime} - {self.watch_status}"
