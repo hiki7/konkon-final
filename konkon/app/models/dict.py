@@ -7,12 +7,15 @@ class Category(TimestampModel):
     """Категория аниме"""
 
     id: int
-    name: str = models.CharField(
+    title: str = models.CharField(
         verbose_name="Название категории",
         max_length=255,
         null=False,
         blank=False,
         unique=True,
+    )
+    description: str = models.TextField(
+        verbose_name="Описание категории", null=True, blank=True
     )
 
     class Meta:
@@ -20,4 +23,4 @@ class Category(TimestampModel):
         verbose_name = _("Категория")
 
     def __str__(self):
-        return self.name
+        return self.title
