@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Category(TimestampModel):
-    """Категория аниме"""
+    """Категория аниме/манги"""
 
     id: int
     title: str = models.CharField(
@@ -27,7 +27,7 @@ class Category(TimestampModel):
 
 
 class Genre(TimestampModel):
-    """Жанр аниме"""
+    """Жанр аниме/манги"""
 
     id: int
     name: str = models.CharField(
