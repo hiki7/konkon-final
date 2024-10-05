@@ -24,3 +24,23 @@ class Category(TimestampModel):
 
     def __str__(self):
         return self.title
+
+
+class Genre(TimestampModel):
+    """Жанр аниме"""
+
+    id: int
+    name: str = models.CharField(
+        verbose_name="Название жанра",
+        max_length=255,
+        null=False,
+        blank=False,
+        unique=True,
+    )
+
+    class Meta:
+        verbose_name_plural = _("Жанры")
+        verbose_name = _("Жанр")
+
+    def __str__(self):
+        return self.name
