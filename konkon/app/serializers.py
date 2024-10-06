@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Anime, Category, Genre
+from .models import Anime, Category, Genre, UserAnime
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -33,3 +33,11 @@ class AnimeSerializer(serializers.ModelSerializer):
             "categories",
             "genre",
         ]
+
+
+class UserAnimeSerializer(serializers.ModelSerializer):
+    anime = AnimeSerializer(read_only=True)
+
+    class Meta:
+        model = UserAnime
+        fields = ["anime", "watch_status"]
