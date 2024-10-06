@@ -15,8 +15,8 @@ class GenreSerializer(serializers.ModelSerializer):
 
 
 class AnimeSerializer(serializers.ModelSerializer):
-    categories = CategorySerializer()
-    genre = GenreSerializer()
+    categories = CategorySerializer(many=True, read_only=True)
+    genre = GenreSerializer(many=True, read_only=True)
 
     class Meta:
         model = Anime
