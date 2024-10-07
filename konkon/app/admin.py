@@ -33,3 +33,11 @@ class GenreAdmin(admin.ModelAdmin):
     search_fields = ("name",)
     list_filter = ("name",)
     ordering = ("name",)
+
+
+@admin.register(UserAnime)
+class UserAnimeAdmin(admin.ModelAdmin):
+    list_display = ("user", "anime", "watch_status")
+    search_fields = ("watch_status",)
+    list_filter = ("watch_status",)
+    ordering = ("user", "anime")
