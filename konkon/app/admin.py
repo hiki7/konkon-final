@@ -17,3 +17,11 @@ class AnimeAdmin(admin.ModelAdmin):
     search_fields = ("title", "status", "show_type", "age_rating")
     list_filter = ("status", "episode_count", "show_type", "age_rating")
     ordering = ("title", "episode_count")
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ("title", "description")
+    search_fields = ("title",)
+    list_filter = ("title",)
+    ordering = ("title",)
