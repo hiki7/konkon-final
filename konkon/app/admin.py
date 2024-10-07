@@ -25,3 +25,11 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ("title",)
     list_filter = ("title",)
     ordering = ("title",)
+
+
+@admin.register(Genre)
+class GenreAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+    search_fields = ("name",)
+    list_filter = ("name",)
+    ordering = ("name",)
