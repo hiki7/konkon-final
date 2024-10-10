@@ -1,1 +1,1 @@
-from .dict import GenreViewSet
+from .dict import GenreViewSet, CategoryViewSet
